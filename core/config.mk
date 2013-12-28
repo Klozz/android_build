@@ -874,4 +874,7 @@ ifneq ($(COS_BUILD),)
 $(eval include vendor/cos/sepolicy/sepolicy.mk)
 endif
 
+# Rules for QCOM targets
+include $(BUILD_SYSTEM)/qcom_target.mk
+
 include $(BUILD_SYSTEM)/dumpvar.mk
