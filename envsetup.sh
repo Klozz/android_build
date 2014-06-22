@@ -576,7 +576,8 @@ function brunch()
 function breakfast()
 {
     target=$1
-    CM_DEVICES_ONLY="true"
+    local variant=$2
+    COS_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
     for f in `/bin/ls vendor/cos/vendorsetup.sh 2> /dev/null`
@@ -595,8 +596,11 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
-            # This is probably just the COS model name
-            lunch cos_$target-userdebug
+            # This is probably just the nexus model name
+            if [ -z "$variant" ]; then
+                variant="userdebug"
+            fi
+            lunch to_$target-$variant
         fi
     fi
     return $?
