@@ -131,12 +131,12 @@ function check_product()
         return
     fi
 
-    if (echo -n $1 | grep -q -e "^cm_") ; then
-       CM_BUILD=$(echo -n $1 | sed -e 's/^cm_//g')
+    if (echo -n $1 | grep -q -e "^cos_") ; then
+       COS_BUILD=$(echo -n $1 | sed -e 's/^cos_//g')
     else
-       CM_BUILD=
+       COS_BUILD=
     fi
-    export CM_BUILD
+    export COS_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
