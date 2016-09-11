@@ -1556,8 +1556,8 @@ function mka() {
     ## Clean Up the Garbage
     echo "Removing Previous Builds for $OUT"
     rm -rf $OUT/system/build.prop
-    rm -rf $OUT/OCT-N*.zip*
-    rm -rf $OUT/to_*ota*.zip
+    rm -rf $OUT/Cosmic-OS-N*.zip*
+    rm -rf $OUT/cos_*ota*.zip
     echo "Clean Up Complete! Time to Make it Dirty"
 
     case `uname -s` in
@@ -1565,9 +1565,9 @@ function mka() {
             make -j `sysctl hw.ncpu|cut -d" " -f2` "$@"
             ;;
         *)
-            if [ $TO_OR ]; then
-                echo "Using $TO_OR Threads"
-                mk_timer schedtool -B -n 1 -e ionice -n 1 make -j$TO_OR "$@"
+            if [ $COS_OR ]; then
+                echo "Using $COS_OR Threads"
+                mk_timer schedtool -B -n 1 -e ionice -n 1 make -j$COS_OR "$@"
             else
                 echo "No Override"
                 mk_timer schedtool -B -n 1 -e ionice -n 1 make -j$(cat /proc/cpuinfo | grep "^processor" | wc -l) "$@"
